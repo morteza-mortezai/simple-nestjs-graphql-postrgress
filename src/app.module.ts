@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+// import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { AppResolver } from './app.resolver';
 
 @Module({
@@ -14,12 +13,9 @@ import { AppResolver } from './app.resolver';
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
       },
-      // emitTypenameField: true,
-      // skipResolverArgs: true,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      plugins: [],
     }),
   ],
-  controllers: [AppController],
   providers: [AppResolver],
 })
 export class AppModule {}
